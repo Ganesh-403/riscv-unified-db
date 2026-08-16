@@ -1,0 +1,33 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# yaml-language-server: $schema=../../../../schemas/csr_schema.json
+
+$schema: "../../../../schemas/csr_schema.json#"
+kind: csr
+name: sctrdepth
+long_name: Supervisor Control Transfer Records Depth
+address: 0x15F
+writable: true
+priv_mode: S
+length: SXLEN
+description: |
+  The `sctrdepth` register is an `SXLEN`-bit read/write WARL register used to select the number
+  of records that can be held in the CTR buffer.
+definedBy:
+  extension:
+    name: Ssctr
+fields:
+  DEPTH:
+    location_rv32: 2-0
+    location_rv64: 2-0
+    description: |
+      Selects the depth of the CTR buffer.
+    type: WARL
+    reset_value: UNDEFINED_LEGAL
+  WPRI:
+    location_rv32: 31-3
+    location_rv64: 63-3
+    description: |
+      Reserved.
+    type: WPRI

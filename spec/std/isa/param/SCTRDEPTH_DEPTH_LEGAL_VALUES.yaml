@@ -1,0 +1,29 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# yaml-language-server: $schema=../../../schemas/param_schema.json
+
+$schema: param_schema.json#
+kind: parameter
+name: SCTRDEPTH_DEPTH_LEGAL_VALUES
+description: |
+  The set of supported values for the `sctrdepth.DEPTH` field, representing the
+  supported depths of the Control Transfer Records (CTR) buffer.
+  Legal values correspond to the depth encoding (e.g., 0 for 16 entries, 4 for 256 entries).
+long_name: Supported sctrdepth DEPTH values
+schema:
+  type: array
+  items:
+    type: integer
+    enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+  maxItems: 5
+  minItems: 1
+  uniqueItems: true
+definedBy:
+  extension:
+    name: Smctr

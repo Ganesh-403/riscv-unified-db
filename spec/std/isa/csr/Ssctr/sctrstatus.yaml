@@ -1,0 +1,53 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# yaml-language-server: $schema=../../../../schemas/csr_schema.json
+
+$schema: "../../../../schemas/csr_schema.json#"
+kind: csr
+name: sctrstatus
+long_name: Supervisor Control Transfer Records Status
+address: 0x14F
+writable: true
+priv_mode: S
+length: SXLEN
+description: |
+  The `sctrstatus` register is an S-mode and VS-mode alias to the `mctrstatus` register.
+  It provides access to CTR status information and is updated by hardware whenever CTR is active.
+definedBy:
+  extension:
+    name: Ssctr
+fields:
+  WRPTR:
+    location_rv32: 7-0
+    location_rv64: 7-0
+    description: |
+      Write Pointer. Indicates the physical CTR buffer entry to be written next.
+    type: WARL
+    reset_value: UNDEFINED_LEGAL
+  WPRI_1:
+    location_rv32: 29-8
+    location_rv64: 29-8
+    description: |
+      Reserved.
+    type: WPRI
+  WRAP:
+    location_rv32: 30
+    location_rv64: 30
+    description: |
+      Wrap Indicator. A sticky bit set when the WRPTR has wrapped around.
+    type: RW
+    reset_value: UNDEFINED_LEGAL
+  FROZEN:
+    location_rv32: 31
+    location_rv64: 31
+    description: |
+      When set, inhibits transfer recording.
+    type: RW
+    reset_value: UNDEFINED_LEGAL
+  WPRI_2:
+    location_rv32: none
+    location_rv64: 63-32
+    description: |
+      Reserved.
+    type: WPRI
